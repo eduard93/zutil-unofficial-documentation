@@ -15,33 +15,21 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |Command|Description|Commentaire|
 |----|----|----|
 |$ZU(0)|  create CACHÉ.DAT
-
 |$ZU(1)|  modify CACHÉ.DAT
-
 |$ZU(2)|  delete CACHÉ.DAT
-
 |$ZU(3)|  dismount CACHÉ.DAT
-
 |$ZU(4, pid)|Terminates a process (^RESJOB) |API: %SYSTEM.Process.Terminate()|
 |$ZU(4, pid, flag) | flag = integer, if negative -> process termination operations (-65 when process is a systemdaemon / unresolved transaction state, other). If positive -> exit status code that Caché returns to the host operating system upon termination.
-
 |$ZU(5)|Print current namespace| $NAMESPACE, not exactly replacement, but preferable |
 |$ZU(5, "namespace")|Switch to namespace| $NAMESPACE="namespace"|
-
 |$ZU(6)|Dead process clean up|
-
 |$ZU(7)|Flush a block from buffer pool
-
 |$ZU(8)|Manipulate DLM locks
-
 |$ZU(9, device, message)|Print message to cconsole log (device = "" is the default device)|API: %SYS.System.WriteToConsoleLog() or %Library.Device.Broadcast()|
 |$ZU(9, terminal, message, timeout) | timeout: integer specifying the number of secondes to wait before timeout (used with named terminals only) |
 |$ZU(9, device, message, loglevel)|loglevel: numeric code indicating which logging level option to use (used with operator console only) |
-
 |$ZU(10)|Start network daemon
-
 |$ZU(11)|
-
 |$ZU(12)|Returns the full path of the mgr directory|
 |$ZU(12, name) | Returns the current namespace pathname |API: %Library.File.ManagerDirectory and %Library.File.DirectoryExists()|
 |$ZU(12, name, canon=0) | Canonicalize name as a filename, does not check if valid | API: %Library.File.NormalizeDirectory() 
@@ -49,43 +37,27 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |$ZU(12, name, canon=2)| If name refers to an existing directory, canonicalize name and return the full pathname. Otherwise, return null.
 |$ZU(12, name, canon=3)| If name refers to an existing directory or a special device that can contain a Caché database, canonicalize name and return the full pathname. Otherwise, return null
 |$ZU(12, name, canon, case) | The default canonical form returned is entirely in lowercase letters, regardless of the case of name. To preserve uppercase letters on Windows systems, specify a caseflag with a value of 1. 
-
 |$ZU(13) | old netalloc | Removed
-
 |$ZU(14) | Job server | 
-
 |$ZU(15, devname) | Translate RMS filename to canonical form | API: %Library.File.NormalizeFilename()
-
 |$ZU(16) | Returns device names of specified type
-
 |$ZU(17) | Mounts database
-
 |$ZU(18, n) | Sets undefined variable handling for the current process. n is optional (0 by default), changes behavior of Caché when it encounters an undefined variable for local, process-private global, and global variables; it has no effect on special variables. | API: %SYSTEM.Process.Undefined()
 |$ZU(18, 0) | Issues the <UNDEFINED> error for any undefined variable.
 |$ZU(18, 1) | Returns a null string for a reference to an undefined variable with subscripts, and issues the<UNDEFINED> error for undefined variables without subscripts.
 |$ZU(18, 2) | Returns a null string (instead of issuing an <UNDEFINED> error) for any undefined variable.
 |$ZU(18, -1) | $ZU(18, 2)
-
 |$ZU(19) | Duplicate of $ZU(18) |
-
 |$ZU(20, new) | Specifies the namespace(s) that contains the routine dataset. | API: %SYSTEM.Process.UserRoutinePath() 
 |$ZU(20, new, second, third) | If Caché does notfind a routine in new, Caché looks for the routine in second. If Caché does not find the routine in second, Caché looks for the routine in third, and so on. | Using routines in second is VERY slow!
-
 |$ZU(21, 0) | Returns the location of process-private globals. | API: %SYSTEM.Process.PrivateGlobalLocation()
 |$ZU(21, 1) | Deletes allprocess-private globals. It returns 1 upon successful completion, 0 upon error. Returns 1 even iuf no process-private globals defined. | API: %SYSTEM.Process.KillPrivateGlobals()
-
 |$ZU(22, 0, ff, bs) | Form feed/Backspace control sequence in this job. ff and bs optional, new form feed control code sequence / new backspace control code sequence. | API: %Library.Device.SetFFBS()
-
 |$ZU(23) | Collation
-
 |$ZU(24) |
-
 |$ZU(25) |
-
 |$ZU(26) |
-
 |$ZU(27) | Create a database
-
 |$ZU(28, string, flag) | Performs collation conversion. It applies the collation type specified in flag to string | API: %SYSTEM.Util.Collation()
 |$ZU(28, string, 0) | EXACT: Returns string unchanged. Does not convert NULLs. | Corresponds to the Caché SQL%EXACT function.
 |$ZU(28, string, 1) | SPACE: Appends a blank to beginning of string
@@ -98,71 +70,43 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |$ZU(28, string, 8) | SQLSTRING: Removes trailing blanks. Appends a blank to beginning of string. |Corresponds to the Caché SQL %SQLSTRING function.
 |$ZU(28, string, 9) | STRING: Removes leading, trailing, and embedded blanks. Removes all punctuation characters, except commas (,). Converts letters to uppercase. Appends a blank to beginning of string. |Corresponds to the Caché SQL %STRING function.
 |$ZU(28, string, flag, len) | len is the truncation length in characters, specified as an integer. Can be used with flag values of 7, 8 and 9.
-
 |$ZU(29)| set up form feed control
-
 |$ZU(30)
-
 |$ZU(31)| inlogor (for backup)
-
 |$ZU(32)| dirpass
-
 |$ZU(33, lockitem, ownerjob, ownersys)|Removes one item from the Lock Table. Uses class calls for this if actually on a customer system.| API: SYS.Lock.DeleteOneLock()|
-
 |$ZU(34)|Transactions
-
 |$ZU(35)|
-
 |$ZU(36)|Edit volume label
-
 |$ZU(37)|
-
 |$ZU(38)|
-
 |$ZU(39, sys1)| Specifies a search path for percent (%) routines. sys1 corresponds to the namespace where we search (by default="" current namespace) | %SYSTEM.Process.SysRoutinePath()
 |$ZU(39, sys1, sys2, sys3)|  If Caché does not find a routine in sys1, it will search for it in sys2. If Caché does not find a routine in sys2, it will search for it in sys3.
-
 |$ZU(40)|Offsets for View command
-
 |$ZU(41)|Symbol Table Management
-
 |$ZU(42)|
-
 |$ZU(43)|
-
 |$ZU(44)|Manipulate path of namespaces
-
 |$ZU(45)|
-
 |$ZU(46)|
-
 |$ZU(47)|
-
 |$ZU(48)|ForceX for VMS
-
 |$ZU(49)|Returns the header information for the manager’s directory. | API: SYS.Database.<various class properties>|
 |$ZU(49, dir)| Returns information on the directory dir (if dir="", current directory). |
 |$ZU(49, dir, 0)| Returns the database header information as a comma-separated string. This is the default if no flag parameter is specified.
 |$ZU(49, dir, 1)| Returns cluster lock information as a comma-separated string. Do not use this flag value when specifying a system file number for dir.
 |$ZU(49, dir, 2)| Returns the most recent database file expansion time (in $HOROLOG format). This value is returned as the second item in a comma-separated string.
 |$ZU(49, dir, 3)| Returns the directory location as the string sys^dir, where sys is the remote system number (0 if local), and dir is the directory name. This flag value can only be used when specifying a system file number (sfn) for dir.
-
-
 |$ZU(50)| dpolabel for backup
-
 |$ZU(51)|Returns value of WDSTOP (wait for quiescence) |
 |$ZU(51,1)|Start the Write Daemon if necessary|
-
 |$ZU(52)|database restore
-
 |$ZU(53)|TCP Device name assigned by parent process| API: %SYSTEM.INetInfo.<TCPName()/TPStats()>
 |$ZU(53,2)| Returns the number of bytes that have been read from the current TCP device.
 |$ZU(53,3)| Returns the number of bytes that have been read from the current TCP device and clears the counter.
 |$ZU(53,4)| Returns the number of bytes that have been written to the current TCP device.
 |$ZU(53,5)| returns the number of bytes that have been written to the current TCP device and clears the counter.
-
 |$ZU(54,0)|Network db lookups (See $ZU(110)).|
-
 |$ZU(55, n)| Returns or changes the current language mode | %SYSTEM.Process.LanguageMode()
 |$ZU(55, 0)| Sets language mode to Caché and return the value for the previous state of the switch. Caché is the default mode for the switch.
 |$ZU(55, 1)| Sets language mode to DSM-11 and return the value for the previous state of the switch.
@@ -171,9 +115,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |$ZU(55, 6)| Sets language mode to DSM-J (Japanese) for OpenVMS and return the value for the previous stateof the switch.
 |$ZU(55, 7)| Sets language mode to DTM-J (Japanese) for OpenVMS and return the value for the previous stateof the switch.
 |$ZU(55, 8)| Sets language mode to MSM and return the value for the previous state of the switch. MSM modechanges the use of the $ZC ($ZCHILD) special variable.
-
 |$ZU(56, 2)| Locates source file and line of code for last Caché ObjectScript error. 
-
 |$ZU(56,0)|Returns C module name that generated last Caché error.
 |$ZU(56,1)|Returns C line number that generated last Caché error.
 |$ZU(56,2)|Returns C mod name & line # that generated last Caché error. | API: %SYSTEM.Process.ErrorLine()
@@ -181,29 +123,22 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |$ZU(56,4)|Returns offset into routine buffer of current object code pointer.
 |$ZU(56,5)|Extended error information associated with the most recent error for which such information is maintained in perritem.
 |$ZU(56,6)|Returns any OS error message associated with the COS error code, in the format "code text"|%SYSTEM.Process.OSError()
-
 |$ZU(57) | devigclr (Management function for routine interlock devices).
-
 |$ZU(58) |
-
 |$ZU(59) | Clusters Support
-
 |$ZU(60) | Manipulates priorities
-
 |$ZU(61) | Reads/Writes process parameters
-
 |$ZU(62, 1) | This function can be used for general ObjectScript syntax checking, including XECUTE and $XECUTE command line arguments that do not use parameter passing. | %Library.Routine.CheckSyntax()
 |$ZU(62, 2) | This function can be used for checking XECUTE and $XECUTE command line arguments that use parameter passing. It recognizes a formal parameter list at the beginning of the code string. $ZUTIL(62,2) also correctly performs syntax checking on a code string that does not include a formal parameter list.
 |$ZU(62,n,code)| code: A string expression specifying a line of Caché ObjectScript code.
-
 |$ZU(63) | Table of remote hosts
-
 |$ZU(64) | Table of incoming DDP volset  mappings
-
 |$ZU(65) | Cluster blocks and preallocated blocks.
-
 |$ZU(66) | Creates daemon jobs
-
+  
+# TODO :
+|Command|Description|Commentaire|
+|----|----|----|
 |$ZU(67,pid)|returns the job number of process "pid" if it is alive, else 0
 |$ZU(67,0,pid)|returns 2 if pid is active, 0 if not there, 1 if job is dead but pidtab is still in pidtab.
 |$ZU(67,1,pid)|same as $ZU(67,0,pid) except it will clean up the pidtab if job is dead.
