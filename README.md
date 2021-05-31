@@ -13,7 +13,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 
 
 |Command|Description|Commentaire|
-|----|----|----|
+|:----:|----|----:|
 |$ZU(0)|  create CACHÉ.DAT
 |$ZU(1)|  modify CACHÉ.DAT
 |$ZU(2)|  delete CACHÉ.DAT
@@ -144,7 +144,6 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 |$ZU(67,1,pid)|same as $ZU(67,0,pid) except it will clean up the pidtab if job is dead.
 |$ZU(67,15,$J)|IP Address of current job
 |$ZU(67,32,pid)|Return %SS name of pid|%SYS.ProcessQuery.Open() and .%OpenID() can also be used to check the state of a process.You can Open a %SYS.ProcessQuery object by job number or process ID, then look at the JobNumber or Pid propertyAlso, see the ClientIPAddress and StartupClientIPAddress properties of that class|
-
 |$ZU(68,x)|set config options for current process
 |$ZU(68,11)|set Read Line Recall (arrow keys in terminal)
 |$ZU(69,x)|set config options system-wide
