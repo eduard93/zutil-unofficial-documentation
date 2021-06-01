@@ -13,7 +13,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 
 
 | Command | Description | Commentaire | 
-| :----: | ---- | ----: | 
+| ---- | ---- | ---- | 
 | $ZU(0) | create CACHÉ.DAT
 | $ZU(1) | modify CACHÉ.DAT
 | $ZU(2) | delete CACHÉ.DAT
@@ -479,7 +479,6 @@ to ensure a specified PV exists.
 | $ZU(210,32) | %ToPVA() - fetch internal serialised format | Unimplemented?
 | $ZU(210,34) | %FromPVA() - Build an in-memory model from the serialised format | Unimplemented?
 | $ZU(210,35) | %FromPVA() - Append a string to the internal serialised format | Unimplemented?
-| $ZU(210,36) | %FromPVA() and %ToPVA() -- kill the
-serialised format in the object | Unimplemented?
+| $ZU(210,36) | %FromPVA() and %ToPVA() -- kill the serialised format in the object | Unimplemented?
 | $ZU(210,38) | %Delete of a %Array
 | $ZU(210,39) | %Delete of a %Object
