@@ -128,7 +128,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(59) | Clusters Support
 | $ZU(60) | Manipulates priorities
 | $ZU(61) | Reads/Writes process parameters
-| $ZU(62,1) | This function can be used for general ObjectScript syntax checking,including XECUTE and $XECUTE command line arguments that do not use parameter passing. | %Library.Routine.CheckSyntax()
+| $ZU(62,1) | This function can be used for general ObjectScript syntax checking, including XECUTE and $XECUTE command line arguments that do not use parameter passing. | %Library.Routine.CheckSyntax()
 | $ZU(62,2) | This function can be used for checking XECUTE and $XECUTE command line arguments that use parameter passing. It recognizes a formal parameter list at the beginning of the code string. $ZU(62,2) also correctly performs syntax checking on a code string that does not include a formal parameter list.
 | $ZU(62,n,code) | code: A string expression specifying a line of Caché ObjectScript code.
 | $ZU(63) | Table of remote hosts
@@ -150,84 +150,84 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(67,13) | Returns Executable Filename of a Client Process | API: %SYS.ProcessQuery.ClientExecutableName / %SYSTEM.Process.ClientExecutableName()
 | $ZU(67,14) | Returns Operating System Running a Client Process | API: %SYS.ProcessQuery.CSPSessionID / %SYSTEM.Process.CSPSessionID()
 | $ZU(67,15) | Returns IP Address of a Client Process | API: %SYS.ProcessQuery.ClientIPAddress / %SYSTEM.Process.ClientIPAddress()
-| $ZU(67,32,pid) | Returns %SS name of pid | %SYS.ProcessQuery.Open() and .%OpenID() can also be used to check the state of a process. You can Open a %SYS.ProcessQuery object by job number or process ID,then look at the JobNumber or Pid property. Also, see the ClientIPAddress and StartupClientIPAddress properties of that class | 
-| $ZU(68,1,n) | Null Subscript Mode Process Switch. n=0, Disables setting/referencing null subscripted globals (the default). n=1, Enables setting/referencing null subscripted globals.
+| $ZU(67,32,pid) | Returns %SS name of pid | %SYS.ProcessQuery.Open() and .%OpenID() can also be used to check the state of a process. You can Open a %SYS.ProcessQuery object by job number or process ID, then look at the JobNumber or Pid property. Also, see the ClientIPAddress and StartupClientIPAddress properties of that class |  
+| $ZU(68,0,n) | Sets undefined variable handling for the current process. | API: %SYS.Process.Undefined()
+| $ZU(68,1,n) | Null Subscript Mode Process Switch. n=0, Disables setting/referencing null subscripted globals (the default). n=1, Enables setting/referencing null subscripted globals. | API: %SYSTEM.Process.OpenMode()
 | $ZU(68,2,n) | Default OPEN Mode for Sequential Files. n -> the boolean value that specifies the process-specific default mode for sequential files on OPEN.
-| $ZU(68,3,n) | Automatic Sequential File Creation Mode Process Default.  n -> the boolean value that specifies whether a sequential file is automatically created on OPEN.
-| $ZU(68,5,n) | Argumentless BREAK Process Switch.  n -> the boolean value that specifies whether or not argumentless BREAK commands are enabled for the current process.
-| $ZU(68,6,n) | Reliable SET Networking Mode Process Switch.  n -> the boolean value that specifies whether or not Reliable SET Networking mode is enabled for the current process.
-| $ZU(68,7,n) | External Reference Mode Process Switch.  n -> the boolean value that specifies whether or not extended global references are retained for the current process.
+| $ZU(68,3,n) | Automatic Sequential File Creation Mode Process Default.  n -> the boolean value that specifies whether a sequential file is automatically created on OPEN. | API: %SYSTEM.Process.FileMode()
+| $ZU(68,5,n) | Argumentless BREAK Process Switch.  n -> the boolean value that specifies whether or not argumentless BREAK commands are enabled for the current process. | API: %SYSTEM.Process.BreakMode()
+| $ZU(68,6,n) | Reliable SET Networking Mode Process Switch.  n -> the boolean value that specifies whether or not Reliable SET Networking mode is enabled for the current process. | Deprecated
+| $ZU(68,7,n) | External Reference Mode Process Switch.  n -> the boolean value that specifies whether or not extended global references are retained for the current process. | API: %SYSTEM.Process.LineRecall()
 | $ZU(68,11,n) | Read Line Recall Mode Process Switch.  n -> the boolean value that specifies whether read line recall mode is enabled for the current process. 1=enabled. 0=disabled.
-| $ZU(68,15,n) | Modem Disconnect Detection.  n -> the boolean value that specifies whether Caché detects I/O disconnection.
-| $ZU(68,21,n) | Synchronous Transaction Commit Mode. n A boolean value that specifies whether or not synchronous transaction commit mode is enabled for the current process.
-| $ZU(68,22,n) | $X Update Mode for Escape Sequences. n The numeric code that specifies the $X update mode for the current process. This mode should correspond to your computer platform and Intersystems software.
+| $ZU(68,15,n) | Modem Disconnect Detection.  n -> the boolean value that specifies whether Caché detects I/O disconnection. | API: %SYSTEM.Process.SynchCommit()
+| $ZU(68,21,n) | Synchronous Transaction Commit Mode.  n -> a boolean value that specifies whether or not synchronous transaction commit mode is enabled for the current process. | API: %SYSTEM.Process.DX()
+| $ZU(68,22,n) | $X Update Mode for Escape Sequences.  n -> the numeric code that specifies the $X update mode for the current process. This mode should correspond to your computer platform and Intersystems software.
 | $ZU(68,25,n) | Dynamically Set or Remove Batch Status.  n -> the boolean value that specifies whether batch or interactive status is active for the current process.
-| $ZU(68,26,n) | Default Display of Current Namespace.  n -> the boolean value that specifies whether Caché includes the current namespace name in the terminal prompt for the current process.
-| $ZU(68,27,n) | Network Hardening for the Current Process.  n -> the boolean value that specifies whether Caché enables or disables network hardening for the current process.
-| $ZU(68,28,n) | Control Root (Unsubscripted) Node Kills. n An integer code value that specifies whether Caché allows the current process to kill root-level (unsubscripted) global nodes. Supported values are 0, 1, and 2.
-| $ZU(68,30,n) | Error-Handling Behavior (to allow use of DSM language-mode error-handling).  n -> the boolean value that specifies whether or not a process uses Caché-style error handling. 0 specifies Caché-style behavior. 1 specifies DSM-style behavior. The system default setting is 0.
-| $ZU(68,32,n) | Date Range and Invalid Date Behavior.  n -> the boolean value that specifies whether or not a process uses Caché-style date behavior.
-| $ZU(68,34,n) | Process Interruptible by Asynchronous Errors.  n -> the boolean value that specifies whether or not the current process should receive asynchronous errors.
-| $ZU(68,39,n) | Disable or Enable Caching.  n -> the boolean value that specifies whether or not a process has caching enabled. Note that settings are: 0 = caching enabled. 1 = caching disabled.
-| $ZU(68,40,n) | End-of-File Handling for Sequential Files (to support porting of MSMroutines).  n -> the boolean value that sets end-of-file handling for the current process. 0=Caché default format. 1=end-of-file flagging format.
-| $ZU(68,42,n) | $JOB Format for Process.  n -> the boolean value that specifies whether or not a process uses the standard $JOB return string.
-| $ZU(68,43,n) | Clearing of Global Vectors (when calling $ZU(5).).  n -> the boolean value that specifies whether or not $ZU(5) clears global vectors for the current process.
-| $ZU(68,45,n) | Truncate Numbers During String-to-Number Conversion (to supportporting of MSM routines).  n -> the boolean value that specifies whether or not the current process truncates numbers.
-| $ZU(68,51,n) | Namespace Default Directory Assignment.  n -> the boolean value that specifies whether or not changing the namespace also changes the default directory for the current process.
-| $ZU(68,55,n) | $X/$Y Behavior for TCP Devices. n A boolean value that specifies the behavior for $X and $Y for TCP devices for the current process: 0 = Caché sets $X and $Y to conventional values (terminal emulation). 1 = Caché sets $X and $Y to specialized TCP values used for TCP data transfer output. The default is 0.
-| $ZU(68,60,n) | Asynchronous Telnet Disconnect Errors. n A boolean value that specifies whether or not the current process should receive Telnet disconnect errors asynchronously
-| $ZU(68,63,n) | Lowercase “e” as a Scientific Notation Exponent Symbol.  n -> the boolean value that specifies whether or not a process should treat lowercase “e” as a scientific notation base-10 exponent symbol. 1 = evaluate “e” as an exponent symbol. 0 = do not evaluate “e” as an exponent symbol. The default is 1.
-| $ZU(68,66,n) | Suppress Telnet NUL at End-of-Line32.  n -> the boolean value that specifies whether or not Caché should suppress NUL following a CR atend-of-line. 1 = suppress NUL. 0 = do not suppress NUL. The default is 0.
-| $ZU(68,67,n) | Stack and Register Usage Message Box Display.  n -> the boolean value that specifies whether or not Caché should display or suppress the Windows stackand register usage box for a cache.exe process when it encounters an exception. 1 = enable display of the message box. 0 = suppress display of the message box. The default is 0.
-| $ZU(68,70,n) | $DOUBLE INF and NAN Behavior. n A boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions.
-| $ZU(68,71,n) | Sets IP address format for the current process. n A boolean value to set IP address format. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported).
-| $ZU(68,72,n) | Sets MVBasic handling of undefined variables.  n -> the boolean value that specifies whether or not Caché should issue an error when the current MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0.
-| $ZU(69,0,n) | Default $ZU(18) Values. n A numeric code specifying how to handle undefined variables system-wide. Permitted values are 0, 1, and 2.
-| $ZU(69,1,n) | Null Subscript Mode System Default.  n -> the boolean value that specifies whether or not to enable the setting and referencing of null subscripted globals.
-| $ZU(69,2,n) | Default Mode for Sequential Files.  n -> the boolean value that specifies the system-wide default mode for sequential files on OPEN. The options are: 0=Read-only, 1=Read/Write
-| $ZU(69,3,n) | Automatic File Creation Mode SystemDefault. n A boolean value that specifies whether or not an OPEN command should create a new sequential file if the specified sequential file does not exist.
-| $ZU(69,5,n) | Argumentless BREAK System Default. n The switch that determines the system-wide default behavior of argumentless BREAK: 0 = Caché treats an argumentless BREAK as a no-op. 1 = Caché executes BREAK on argumentless BREAK (the default).
-| $ZU(69,6,n) | Reliable SET Networking Mode SystemDefault.  n -> the boolean value that specifies whether or not Reliable SET Networking mode is enabled system-wide.
-| $ZU(69,7,n) | Reference-in-Kind Mode System Default.  n -> the boolean switch to set the default for handling extended global references system-wide.
-| $ZU(69,8,n) | ZA and ZD Modes.  n -> the boolean value to set the system-wide default locking behavior when ZA and ZD are called.
-| $ZU(69,10,n) | Freeze System if Journal Full SystemDefault.  n -> the boolean value that specifies which system behavior applies when a journal is full.
-| $ZU(69,11,n) | Read Line Recall Mode System Default.  n -> the boolean value to enable or disable Read Line Recall mode system-wide.
-| $ZU(69,13,n) | Asynchronous SET/KILL Errors to mneterr.log File.  n -> the boolean value that specifies whether to log asynchronous SET/KILL errors in MNETERR.LOG.
-| $ZU(69,14,n) | Asynchronous SET/KILL Errors to Operator Console.  n -> the boolean value that specifies whether to send asynchronous SET/KILL errors to the operator console.
-| $ZU(69,15,n) | Modem Disconnect Detection SystemDefault.  n -> the boolean value that specifies whether Caché detects I/O device disconnection.
-| $ZU(69,19,n) | DDP Password Security. n A boolean value that specifies whether to enable or disable password protection for DDP connections.
-| $ZU(69,20,n) | Transfer Nodes with Null Subscripts withDSM-DDPYe.  n -> the boolean value that specifies whether the network allows null subscripts.
-| $ZU(69,21,n) | Synchronous Transaction Commit Mode. n A boolean value that specifies whether or not synchronous transaction commit mode is enabled system-wide.
-| $ZU(69,22,n) | $X Update Mode for Escape Sequences. n A numeric code that specifies the $X update mode. Select the value that corresponds to your systemplatform.
-| $ZU(69,24,n) | $ZF Process Deletion by STOP/ ID(OpenVMS)Ye. n The switch that controls whether Caché can delete a process that is executing a user-written $ZF function. 0 = Enable deletion of Caché processes with STOP/ID. 1 = Disable deletion of Caché processes with STOP/ID.
-| $ZU(69,26,n) | System Namespace Display Defaul.  n -> the boolean value that specifies whether to display the namespace name at the terminal prompt.
-| $ZU(69,27,n) | Network Hardening.  n -> the boolean value that specifies whether to enable network hardening system-wide.
-| $ZU(69,28,n) | Control Root (Unsubscripted) Node Kills. n An integer code value that specifies whether Caché allows the processes to kill root-level global nodes system-wide. Supported values are 0, 1, and 2.
-| $ZU(69,30,n) | Error Handling Behavior.  n -> the boolean value that specifies the system-wide default mode for error handling behavior.
-| $ZU(69,31,n) | Network Locks Handling Following a DCPOutage. n A boolean value that specifies whether or not to reinstate network locks when the network returns after a DCP outage.
-| $ZU(69,32,n) | Date Range and Invalid Date Behavior.  n -> the boolean value that specifies whether or not to use Caché-style date behavior system-wide.
-| $ZU(69,34,n) | Processes Interruptible by AsynchronousError.  n -> the boolean value that specifies whether or not processes should be interrupted by receiving asynchronous errors system-wide.
-| $ZU(69,35,n) | Silent Retry for domainspace ConnectionAttemptsYe. n A boolean value that specifies whether or not to perform a silent retry for domainspace connection attempts.
-| $ZU(69,37,n) | Physical Cursor Positioning Mode. n A boolean value that specifies whether or not physical cursor positioning mode is enabled system-wide.
-| $ZU(69,39,n) | Caching for Future Processes.  n -> the boolean value that specifies whether or not a process has caching enabled. Note that settings are: 0 = caching enabled. 1 = caching disabled.
-| $ZU(69,40,n) | End-of-File Handling for Sequential File.  n -> the boolean value that sets end-of-file handling system-wide. 0=Caché format. 1=end-of-file flagging format.
-| $ZU(69,42,n) | $JOB Format System Default.  n -> the boolean value that specifies whether or not to use the standard $JOB return string system-wide.
-| $ZU(69,43,n) | Clearing of Global VectorsYe.  n -> the boolean value that specifies whether or not
-| $ZU(5) clears | global vectors for the current process.
-| $ZU(69,44,n) | Nagle Algorithm for Telnet Transmissions. n A boolean value that specifies whether or not the Nagle algorithm is enabled.
-| $ZU(69,45,n) | Truncate Numbers During String-to-Number Conversion.  n -> the boolean value that specifies whether or not to truncate numbers system-wide.
-| $ZU(69,49,n) | Logging of Transaction Rollb. n A boolean value that specifies whether or not to log transaction rollbacks.
-| $ZU(69,51,n) | Namespace Default Directory Assignment.  n -> the boolean value that specifies whether or not changing the namespace also changes the default directory.
-| $ZU(69,55,n) | $X/$Y Behavior for TCP Devices. n A boolean value that specifies the system-wide default behavior for $X and $Y for TCP devices: 0 = Caché sets $X and $Y to conventional device values (terminal emulation). 1 = Caché sets $X and $Y to specialized TCP values used for TCP data transfer output. The default is 0.
-| $ZU(69,60,n) | Asynchronous Telnet Disconnect Errors. n A boolean value that specifies whether or not processes receive Telnet disconnect errors asynchronously.
-| $ZU(69,63,n) | Lowercase “e” as Scientific NotationSymbol.  n -> the boolean value that specifies whether or not Caché should treat lowercase “e” as a scientific notation base-10 exponent symbol. 1 = evaluate “e” as an exponent symbol. 0 = do not evaluate “e” as an exponent symbol. The default is 1.
-| $ZU(69,66,n) | Suppress Telnet NUL at End-of-Line.  n -> the boolean value that specifies whether or not Caché should suppress NUL following a CR at end-of-line. 1 = suppress NUL. 0 = do not suppress NUL.The default is 0.
-| $ZU(69,67,n) | Stack and Register Usage Message BoxDisplay.  n -> the boolean value that specifies whether or not Caché should display or suppress the Windows stack and register usage box for a cache.exe process when it encounters an exception. 1 = enable display of the message box. 0 = suppress display of the message box. The default is 0.
-| $ZU(69,68,n) | Encryption of Journal Files.  n -> the boolean value that specifies whether or not Caché should establish encryption for future journal files. 1 = encrypt journal files. 0 = do not encrypt journal files. The default is 0.
-| $ZU(69,69,n) | Long String Support.  n -> the boolean value that specifies whether or not Caché should allocate stack space to support strings over 32K characters in length. 1 = allocate long string stack space. 0 = do not allocate long string stack space. The default is 0.
-| $ZU(69,70,n) | $DOUBLE INF and NAN Behavior. n A boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions.
-| $ZU(69,71) | Sets IP address format system-wide. n A boolean value to set IP address format system-wide. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported).
-| $ZU(69,72) | Sets MVBasic handling of undefined variables system-wide.  n -> the boolean value that specifies whether or not Caché should issue an error when an MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0.
+| $ZU(68,26,n) | Default Display of Current Namespace.  n -> the boolean value that specifies whether Caché includes the current namespace name in the terminal prompt for the current process. | API: %SYSTEM.Process.GlobalKillDisabled()
+| $ZU(68,27,n) | Network Hardening for the Current Process.  n -> the boolean value that specifies whether Caché enables or disables network hardening for the current process. | Deprecated
+| $ZU(68,28,n) | Control Root (Unsubscripted) Node Kills. n -> an integer code value that specifies whether Caché allows the current process to kill root-level (unsubscripted) global nodes. Supported values are 0, 1, and 2. | API: %SYSTEM.Process.GlobalKillDisabled()
+| $ZU(68,30,n) | Error-Handling Behavior (to allow use of DSM language-mode error-handling).  n -> the boolean value that specifies whether or not a process uses Caché-style error handling. 0 specifies Caché-style behavior. 1 specifies DSM-style behavior. The system default setting is 0. | API: %SYSTEM.Process.PopError()
+| $ZU(68,32,n) | Date Range and Invalid Date Behavior.  n -> the boolean value that specifies whether or not a process uses Caché-style date behavior. | API: %SYSTEM.Process.ZDateNull()
+| $ZU(68,34,n) | Process Interruptible by Asynchronous Errors.  n -> the boolean value that specifies whether or not the current process should receive asynchronous errors. | API: %SYSTEM.Process.AsynchError()
+| $ZU(68,39,n) | Disable or Enable Caching.  n -> the boolean value that specifies whether or not a process has caching enabled. Note that settings are: 0 = caching enabled. 1 = caching disabled. | Deprecated
+| $ZU(68,40,n) | End-of-File Handling for Sequential Files (to support porting of MSMroutines).  n -> the boolean value that sets end-of-file handling for the current process. 0=Caché default format. 1=end-of-file flagging format. | API: %SYSTEM.Process.SetZEOF()
+| $ZU(68,42,n) | $JOB Format for Process.  n -> the boolean value that specifies whether or not a process uses the standard $JOB return string. | API: %SYSTEM.Process.NodeNameInPid()
+| $ZU(68,43,n) | Clearing of Global Vectors (when calling $ZU(5).).  n -> the boolean value that specifies whether or not $ZU(5) clears global vectors for the current process. | API: %SYSTEM.Process.OldZU5()
+| $ZU(68,45,n) | Truncate Numbers During String-to-Number Conversion (to supportporting of MSM routines).  n -> the boolean value that specifies whether or not the current process truncates numbers. | API: %SYSTEM.Process.TruncateOverflow()
+| $ZU(68,51,n) | Namespace Default Directory Assignment.  n -> the boolean value that specifies whether or not changing the namespace also changes the default directory for the current process. | API: %SYSTEM.Process.SwitchOSdir()
+| $ZU(68,55,n) | $X/$Y Behavior for TCP Devices.  n -> a boolean value that specifies the behavior for $X and $Y for TCP devices for the current process: 0 = Caché sets $X and $Y to conventional values (terminal emulation). 1 = Caché sets $X and $Y to specialized TCP values used for TCP data transfer output. The default is 0. | Deprecated
+| $ZU(68,60,n) | Asynchronous Telnet Disconnect Errors.  n -> a boolean value that specifies whether or not the current process should receive Telnet disconnect errors asynchronously | API: %SYSTEM.Process.AsyncDisconnectErr()
+| $ZU(68,63,n) | Lowercase “e” as a Scientific Notation Exponent Symbol.  n -> the boolean value that specifies whether or not a process should treat lowercase “e” as a scientific notation base-10 exponent symbol. 1 = evaluate “e” as an exponent symbol. 0 = do not evaluate “e” as an exponent symbol. The default is 1. | API: %SYSTEM.Process.ScientificNotation()
+| $ZU(68,66,n) | Suppress Telnet NUL at End-of-Line32.  n -> the boolean value that specifies whether or not Caché should suppress NUL following a CR atend-of-line. 1 = suppress NUL. 0 = do not suppress NUL. The default is 0. | API: %SYSTEM.Process.TelnetNUL()
+| $ZU(68,67,n) | Stack and Register Usage Message Box Display.  n -> the boolean value that specifies whether or not Caché should display or suppress the Windows stackand register usage box for a cache.exe process when it encounters an exception. 1 = enable display of the message box. 0 = suppress display of the message box. The default is 0. | API: %SYSTEM.Process.ExceptionLog()
+| $ZU(68,70,n) | $DOUBLE INF and NAN Behavior.  n -> a boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions. | API: %SYSTEM.Process.IEEEError()
+| $ZU(68,71,n) | Sets IP address format for the current process.  n -> a boolean value to set IP address format. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported). | API: %SYSTEM.Process.IPv6Format()
+| $ZU(68,72,n) | Sets MVBasic handling of undefined variables.  n -> the boolean value that specifies whether or not Caché should issue an error when the current MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0. | API: %SYSTEM.Process.MVUndefined()
+| $ZU(69,0,n) | Default $ZU(18) Values. n -> a numeric code specifying how to handle undefined variables system-wide. Permitted values are 0, 1, and 2. | API: Config.Miscellaneous.Undefined
+| $ZU(69,1,n) | Null Subscript Mode System Default.  n -> the boolean value that specifies whether or not to enable the setting and referencing of null subscripted globals. | API: Config.Miscellaneous.NullSubscripts
+| $ZU(69,2,n) | Default Mode for Sequential Files.  n -> the boolean value that specifies the system-wide default mode for sequential files on OPEN. The options are: 0=Read-only, 1=Read/Write | API: Config.Miscellaneous.OpenMode
+| $ZU(69,3,n) | Automatic File Creation Mode SystemDefault.  n -> a boolean value that specifies whether or not an OPEN command should create a new sequential file if the specified sequential file does not exist. | API: Config.Miscellaneous.FileMode
+| $ZU(69,5,n) | Argumentless BREAK System Default. n -> the switch that determines the system-wide default behavior of argumentless BREAK: 0 = Caché treats an argumentless BREAK as a no-op. 1 = Caché executes BREAK on argumentless BREAK (the default). | API: Config.Miscellaneous.BreakMode
+| $ZU(69,6,n) | Reliable SET Networking Mode SystemDefault.  n -> the boolean value that specifies whether or not Reliable SET Networking mode is enabled system-wide. | Deprecated
+| $ZU(69,7,n) | Reference-in-Kind Mode System Default.  n -> the boolean switch to set the default for handling extended global references system-wide. | API: Config.Miscellaneous.RefInKind
+| $ZU(69,8,n) | ZA and ZD Modes.  n -> the boolean value to set the system-wide default locking behavior when ZA and ZD are called. | API: Config.Miscellaneous.ZaMode
+| $ZU(69,10,n) | Freeze System if Journal Full SystemDefault.  n -> the boolean value that specifies which system behavior applies when a journal is full. | API: Config.Miscellaneous.FreezeOnError
+| $ZU(69,11,n) | Read Line Recall Mode System Default.  n -> the boolean value to enable or disable Read Line Recall mode system-wide. | API: Config.Miscellaneous.LineRecall
+| $ZU(69,13,n) | Asynchronous SET/KILL Errors to mneterr.log File.  n -> the boolean value that specifies whether to log asynchronous SET/KILL errors in MNETERR.LOG. | Deprecated
+| $ZU(69,14,n) | Asynchronous SET/KILL Errors to Operator Console.  n -> the boolean value that specifies whether to send asynchronous SET/KILL errors to the operator console. | Deprecated
+| $ZU(69,15,n) | Modem Disconnect Detection SystemDefault.  n -> the boolean value that specifies whether Caché detects I/O device disconnection. | API: Config.Miscellaneous.DisconnectErr
+| $ZU(69,19,n) | DDP Password Security.  n -> a boolean value that specifies whether to enable or disable password protection for DDP connections. | Deprecated
+| $ZU(69,20,n) | Transfer Nodes with Null Subscripts withDSM-DDPYe.  n -> the boolean value that specifies whether the network allows null subscripts. | Deprecated
+| $ZU(69,21,n) | Synchronous Transaction Commit Mode.  n -> a boolean value that specifies whether or not synchronous transaction commit mode is enabled system-wide. | API: Config.Miscellaneous.SynchCommit
+| $ZU(69,22,n) | $X Update Mode for Escape Sequences. n -> a numeric code that specifies the $X update mode. Select the value that corresponds to your systemplatform. | API: Config.Miscellaneous.DX
+| $ZU(69,24,n) | $ZF Process Deletion by STOP/ ID(OpenVMS)Ye. n -> the switch that controls whether Caché can delete a process that is executing a user-written $ZF function. 0 = Enable deletion of Caché processes with STOP/ID. 1 = Disable deletion of Caché processes with STOP/ID.
+| $ZU(69,26,n) | System Namespace Display Defaul.  n -> the boolean value that specifies whether to display the namespace name at the terminal prompt. | API: Config.Miscellaneous.TerminalPrompt
+| $ZU(69,27,n) | Network Hardening.  n -> the boolean value that specifies whether to enable network hardening system-wide. | Deprecated
+| $ZU(69,28,n) | Control Root (Unsubscripted) Node Kills. n -> an integer code value that specifies whether Caché allows the processes to kill root-level global nodes system-wide. Supported values are 0, 1, and 2. | Deprecated
+| $ZU(69,30,n) | Error Handling Behavior.  n -> the boolean value that specifies the system-wide default mode for error handling behavior. | API: Config.Miscellaneous.PopError
+| $ZU(69,31,n) | Network Locks Handling Following a DCPOutage.  n -> a boolean value that specifies whether or not to reinstate network locks when the network returns after a DCP outage. | Deprecated
+| $ZU(69,32,n) | Date Range and Invalid Date Behavior.  n -> the boolean value that specifies whether or not to use Caché-style date behavior system-wide. | API: Config.Miscellaneous.ZDateNull
+| $ZU(69,34,n) | Processes Interruptible by AsynchronousError.  n -> the boolean value that specifies whether or not processes should be interrupted by receiving asynchronous errors system-wide. | API: Config.Miscellaneous.AsynchError
+| $ZU(69,35,n) | Silent Retry for domainspace ConnectionAttemptsYe.  n -> a boolean value that specifies whether or not to perform a silent retry for domainspace connection attempts. | Deprecated
+| $ZU(69,37,n) | Physical Cursor Positioning Mode.  n -> a boolean value that specifies whether or not physical cursor positioning mode is enabled system-wide. | API: Config.Miscellaneous.PhysicalCursor
+| $ZU(69,39,n) | Caching for Future Processes.  n -> the boolean value that specifies whether or not a process has caching enabled. Note that settings are: 0 = caching enabled. 1 = caching disabled. | Deprecated
+| $ZU(69,40,n) | End-of-File Handling for Sequential File.  n -> the boolean value that sets end-of-file handling system-wide. 0=Caché format. 1=end-of-file flagging format. | API: Config.Miscellaneous.SetZEOF
+| $ZU(69,42,n) | $JOB Format System Default.  n -> the boolean value that specifies whether or not to use the standard $JOB return string system-wide. | API: Config.Miscellaneous.NodeNameInPid
+| $ZU(69,43,n) | Clearing of Global VectorsYe.  n -> the boolean value that specifies whether or not $ZU(5) clears global vectors for the current process. | API: Config.Miscellaneous.OldZU5
+| $ZU(69,44,n) | Nagle Algorithm for Telnet Transmissions.  n -> a boolean value that specifies whether or not the Nagle algorithm is enabled. | API: Config.Miscellaneous.UseNagleAlgorithm
+| $ZU(69,45,n) | Truncate Numbers During String-to-Number Conversion.  n -> the boolean value that specifies whether or not to truncate numbers system-wide. | API: Config.Miscellaneous.TruncateOverflow
+| $ZU(69,49,n) | Logging of Transaction Rollb.  n -> a boolean value that specifies whether or not to log transaction rollbacks. | API: Config.Miscellaneous.LogRollback
+| $ZU(69,51,n) | Namespace Default Directory Assignment.  n -> the boolean value that specifies whether or not changing the namespace also changes the default directory. | API: Config.Miscellaneous.SwitchOSdir
+| $ZU(69,55,n) | $X/$Y Behavior for TCP Devices.  n -> a boolean value that specifies the system-wide default behavior for $X and $Y for TCP devices: 0 = Caché sets $X and $Y to conventional device values (terminal emulation). 1 = Caché sets $X and $Y to specialized TCP values used for TCP data transfer output. The default is 0. | Deprecated
+| $ZU(69,60,n) | Asynchronous Telnet Disconnect Errors.  n -> a boolean value that specifies whether or not processes receive Telnet disconnect errors asynchronously. | API: Config.Miscellaneous.AsyncDisconnectErr
+| $ZU(69,63,n) | Lowercase “e” as Scientific NotationSymbol.  n -> the boolean value that specifies whether or not Caché should treat lowercase “e” as a scientific notation base-10 exponent symbol. 1 = evaluate “e” as an exponent symbol. 0 = do not evaluate “e” as an exponent symbol. The default is 1. | API: Config.Miscellaneous.ScientificNotation
+| $ZU(69,66,n) | Suppress Telnet NUL at End-of-Line.  n -> the boolean value that specifies whether or not Caché should suppress NUL following a CR at end-of-line. 1 = suppress NUL. 0 = do not suppress NUL. The default is 0. | API: Config.Miscellaneous.TelnetNUL
+| $ZU(69,67,n) | Stack and Register Usage Message BoxDisplay.  n -> the boolean value that specifies whether or not Caché should display or suppress the Windows stack and register usage box for a cache.exe process when it encounters an exception. 1 = enable display of the message box. 0 = suppress display of the message box. The default is 0. | Deprecated
+| $ZU(69,68,n) | Encryption of Journal Files.  n -> the boolean value that specifies whether or not Caché should establish encryption for future journal files. 1 = encrypt journal files. 0 = do not encrypt journal files. The default is 0. | API: Config.Miscellaneous.DBEncJournal
+| $ZU(69,69,n) | Long String Support.  n -> the boolean value that specifies whether or not Caché should allocate stack space to support strings over 32K characters in length. 1 = allocate long string stack space. 0 = do not allocate long string stack space. The default is 0. | API: Config.Miscellaneous.EnableLongStrings
+| $ZU(69,70,n) | $DOUBLE INF and NAN Behavior.  n -> a boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions. | API: Config.Miscellaneous.IEEEError
+| $ZU(69,71) | Sets IP address format system-wide.  n -> a boolean value to set IP address format system-wide. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported). | API: Config.Miscellaneous.IPv6
+| $ZU(69,72) | Sets MVBasic handling of undefined variables system-wide.  n -> the boolean value that specifies whether or not Caché should issue an error when an MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0. | API: Config.Miscellaneous.MVDefined
 | $ZU(70) | Subscript encoding
 | $ZU(71,date) | Sets date to a fixed value for the current process. $HOROLOG format. | API: %SYSTEM.Process.FixedDate()
 | $ZU(71,0) | Sets date to default.
@@ -237,9 +237,9 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(78) | Journaling utilities
 | $ZU(78,3) | Returns current journal file
 | $ZU(78,21) | Searches journal file for open transactions | API: %SYS.Journal.System.GetImageJournalInfo()
-| $ZU(78,22,filename,key) | Returns journaling information. filename (optional) The full pathname of a journal file, specified as a quoted string. The default is the current active journal. key (optional) A numeric code for the type of journal information to return. | API: %SYS.Journal.System.GetCurrentFileName() / .IsDisabled()
+| $ZU(78,22,filename,key) | Returns journaling information. filename (optional) -> the full pathname of a journal file, specified as a quoted string. The default is the current active journal. key (optional) -> a numeric code for the type of journal information to return. | API: %SYS.Journal.System.GetCurrentFileName() / .IsDisabled()
 | $ZU(78,23,filename) | Deletes a journal file. | %SYS.Journal.PurgeOne()
-| $ZU(78,28) | Returns journal directory block information.
+| $ZU(78,28) | Returns journal directory block information. | Deprecated
 | $ZU(78,28) | Flushes journal buffer. | API: %SYS.Journal.System.Sync() 
 | $ZU(79) | WIJ reconfiguration
 | $ZU(80) | 
@@ -253,15 +253,15 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(88) | JOBEXAM/Debug support
 | $ZU(88,2,j,n) | Gets value of local variable n for job j
 | $ZU(89) | OLD LOCKTAB support
-| $ZU(90,4,namespace) | Starts up in a specified namespace (UNIX®/OpenVMS). 
+| $ZU(90,4,namespace) | Starts up in a specified namespace (UNIX®/OpenVMS).  | Deprecated
 | $ZU(90,10,namespace) | Tests whether a namespace is defined. | API: %SYS.Namespace.Exists()
 | $ZU(91) | user device table
 | $ZU(92) | 
 | $ZU(93) | GIF/GOF support
-| $ZU(94,pid,message,timeout,noxy) | Broadcasts a message to a specified process. timeout (optional) An integer specifying the number of seconds to wait before timeout. If omitted, no timeout occurs. noxy (optional) A boolean value specifying whether the $X and $Y values are to be modified in the terminal process receiving the message. If 0, $X and $Y are updated. If 1, $X and $Y are not updated.The default is 0. This parameter does not apply to OpenVMS systems, which do not update $X and $Y following a broadcast message. | API: %SYSTEM.Process.Broadcast()
+| $ZU(94,pid,message,timeout,noxy) | Broadcasts a message to a specified process. timeout (optional) -> an integer specifying the number of seconds to wait before timeout. If omitted, no timeout occurs. noxy (optional) -> a boolean value specifying whether the $X and $Y values are to be modified in the terminal process receiving the message. If 0, $X and $Y are updated. If 1, $X and $Y are not updated. The default is 0. This parameter does not apply to OpenVMS systems, which do not update $X and $Y following a broadcast message. | API: %SYSTEM.Process.Broadcast()
 | $ZU(95) | Cluster-wide switch set
 | $ZU(96) | Returns or sets Caché information
-| $ZU(96,3,n) | Return error number for user-defined command. n A user-defined error number to return, specified as an expression that resolves to a positive integer. | API: %SYSTEM.Process.ThrowError()
+| $ZU(96,3,n) | Return error number for user-defined command. n -> a user-defined error number to return, specified as an expression that resolves to a positive integer. | API: %SYSTEM.Process.ThrowError()
 | $ZU(96,4,n) | Sets $TEST to Reflect Redirection Operations.  n -> the boolean value used to set the $TEST special variable upon return from I/O redirection code. 0 = Clears $TEST (sets to 0) on return from the redirected READ. 1 = Sets $TEST (sets to 1) on return from the redirected READ. | API: %SYSTEM.Process.IODollarTest()
 | $ZU(96,5,string) | Sets $DEVICE | API: <special variable>.$DEVICE
 | $ZU(96,9) | Returns the Calling Routine Name | API: %SYSTEM.Process.CallingRoutine()
@@ -270,7 +270,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(97) | Legacy IJC device support
 | $ZU(98) | Gcompact
 | $ZU(99) | Date conversions
-| $ZU(100) | Returns current Windows version
+| $ZU(100) | Returns current Windows version | Deprecated
 | $ZU(101) | Checks license for validity
 | $ZU(102) | Sets pcommport
 | $ZU(103) | 
@@ -282,7 +282,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(109) | TTYFREE support
 | $ZU(110) | Returns the name of the system that is running. | API: %SYS.System.GetNodeName()
 | $ZU(111) | Gets tcp/ip client address
-| $ZU(112,0) | Returns 1 if this process has a license,else 0
+| $ZU(112,0) | Returns 1 if this process has a license, else 0
 | $ZU(112,3) | Returns the number of license units available on this system.
 | $ZU(112,4) | Returns authorized license units in working memory
 | $ZU(112,15,0) | Maximum license units.
@@ -296,8 +296,8 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(112,15,30) | Maximum Non-CSP session count.
 | $ZU(112,15,31) | Current Non-CSP session count.
 | $ZU(112,19) | Returns 1 if clustered,0 otherwise.
-| $ZU(113) | 
-| $ZU(114,0) | Returns the address of the primary ethernet device. This primary ethernet device is the first ethernet device found on the device names list with a valid ethernet address. Any ethernet device can be designated the primary ethernetdevice. | API: %SYSTEM.INetIngo.EthernetAddress()
+| $ZU(113) |  | Deprecated
+| $ZU(114,0) | Returns the address of the primary ethernet device. This primary ethernet device is the first ethernet device found on the device names list with a valid ethernet address. Any ethernet device can be designated the primary ethernet device. | API: %SYSTEM.INetIngo.EthernetAddress()
 | $ZU(114,0,name) | Returns the address of any attached ethernet device specified by name. On OpenVMS systems, this is the physical port address of the ethernet device, not the hardware address.The ethernet address is returned as a string of 12 characters that represent the 48-bit ethernet address. The name is not case sensitive. The maximum length of a device names list is platform-dependent, but the name of anindividual device cannot be more than 15 characters in length. An invalid name value results in a <FUNCTION> error.
 | $ZU(114,0) | Returns a null string, rather than an ethernet address, if problems.
 | $ZU(114,1) | Returns the current list of attached ethernet device names, delimited by $CHAR(1). The first name in this list is the primary ethernet device.
@@ -320,10 +320,10 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(128) | Debugger/Trace support
 | $ZU(128,1) | Returns location of last single step during debugging. | API: %SYSTEM.Process.StepInfo()
 | $ZU(129) | Internal netnode support
-| $ZU(130,flag,0,value) | Sets or returns the domain ID or index. flag Specifies which value to set or return. value (optional) The value to set.
+| $ZU(130,flag,0,value) | Sets or returns the domain ID or index. flag Specifies which value to set or return. value (optional) -> the value to set. | Deprecated
 | $ZU(131) | Set/Return system identifiers
 | $ZU(132) | Makes the last device in use the principal I/O device. | API: %Library.Device.ChangePrincipal()
-| $ZU(133) | Maintain metric counters 
+| $ZU(133) | Maintain metric counters  | Deprecated
 | $ZU(134) | NETCLOBBER
 | $ZU(135) | Class compiler support
 | $ZU(136,21) | Returns current lowtimeprecision flag.
@@ -337,7 +337,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(140,2,name,timeflag) | Returns modification date/time in $HOROLOG format. Returns -2 if the specified file or directory does not exist. On Windows systems, -2 is also returned if a trailing slash is specified. Using the optional timeflag, you can specify whether to return the modification time value in local timezonetime or Universal time (UTC). Universal time is (for most purposes) equivalent to Greenwich Mean Time (GMT).
 | $ZU(140,3,name,timeflag) | Returns creation date/time in $HOROLOG format. Returns -2 if the specified file or directory does not exist. On Windows systems, -2 is also returned if a trailing slash is specified. Using the optional timeflag, you can specify whether to return the creation time value in local timezone time or Universal time (UTC). Universal time is (for most purposes) equivalent to Greenwich Mean Time (GMT).
 | $ZU(140,4,name) | Tests whether the named item exists. Returns 0 if the specified pathname exists, for either a fileor a directory. Returns -2 if the specified item does not exist. On Windows systems, a directory can be specified with or without a trailing slash. On Windows systems, returns -123 if a valid filename is followed by a trailing slash.
-| $ZU(140,5,name) | Deletes the named file. Can delete a read-only file if user has privileges to modify the directory inwhich the file resides. Returns 0 when successful. Returns -2 if name does not exist. Returns -5 if name is a directory.
+| $ZU(140,5,name) | Deletes the named file. Can delete a read-only file if user has privileges to modify the directory in which the file resides. Returns 0 when successful. Returns -2 if name does not exist. Returns -5 if name is a directory.
 | $ZU(140,6,name,newname) | Renames the file specified in name with the name specified in newname. May move the file to a different location, if the host operating system supports it. Returns -2 if name does not exist. Returns -32 if name is a directory.
 | $ZU(140,7,name) | Returns file attributes as a bit map. Returns -2 if the specified file does not exist. On Windows systems, a directory can be specified with or without a trailing slash. On Windows systems, returns -123 if a valid filename is followed by a trailing slash. | | API: %Library.File.Attributes() 
 | $ZU(140,9,name) | Creates the directory specified in name. Returns 0 when successful, or a negative integer indicating an error. Error return values are supplied by the operating system, and are thus platform dependent. On Windows, returns -183 if the specified directory already exists or could not be created. On UNIX®, returns -17 if the specified directory already exists or could not be created. On OpenVMS, returns a negative integer error code if the specified directory could not be created; returns 0 if the specified directory already exists.
@@ -407,11 +407,11 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(183) | ECPWork daemon
 | $ZU(184) | Changes ECP State
 | $ZU(185) | Compares/swaps global node
-| $ZU(186,n) | Sets display in programmer prompt for the current process. n An integer code or a comma-separated list of integer codes that specify what element(s) to include in the terminal prompt. Integer codes should be specified in the order in which you wish the elements tobe displayed. | API: %SYSTEM.Process.TerminalPrompt()
-| $ZU(186,0) | Host name, also known as the current system name. The name assigned to your computer. For example,LABLAPTOP>. This is the same for all of your terminal processes. Refer to $ZUTIL(110) for further details.
+| $ZU(186,n) | Sets display in programmer prompt for the current process. n -> an integer code or a comma-separated list of integer codes that specify what element(s) to include in the terminal prompt. Integer codes should be specified in the order in which you wish the elements tobe displayed. | API: %SYSTEM.Process.TerminalPrompt()
+| $ZU(186,0) | Host name, also known as the current system name. The name assigned to your computer. For example, LABLAPTOP>. This is the same for all of your terminal processes. Refer to $ZUTIL(110) for further details.
 | $ZU(186,1) | Namespace name. For example, %SYS>. To set your terminal prompt to just the current namespacename, you can use $ZUTIL(68,26,1). The current namespace name is contained in the $ZNSPACE special variable, and can be changed using the ZNSPACE command. It can be an explicit namespacename or an implied namespace name.
 | $ZU(186,2) | Config name. The name of your Caché installation. For example, CACHE2>. This is the same for all of your terminal processes.
-| $ZU(186,3) | Current time, expressed as local time in 24-hour format with whole seconds. For example, 15:59:36>.This is the static time value for when the prompt was returned. This value changes for each prompt.
+| $ZU(186,3) | Current time, expressed as local time in 24-hour format with whole seconds. For example, 15:59:36>. This is the static time value for when the prompt was returned. This value changes for each prompt.
 | $ZU(186,4) | pid. The Process ID for your terminal. For example, 2336>. This is different for each terminal process. This value can also be returned from the $JOB special variable.
 | $ZU(186,5) | Username. For example, fred>. This is the same for all of your terminal processes.
 | $ZU(186,6) | Elapse time executing the last command, in seconds.milliseconds. For example, .000495>. Leadingand trailing zeros are suppressed.This changes for each prompt.
@@ -421,10 +421,10 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(190) | SNMP support
 | $ZU(191) | 
 | $ZU(192) | 
-| $ZU(193,timestamp,direction) | Converts Coordinated Universal Time (UTC) to local date and time (and vice versa). direction (optional) A boolean values specifying the direction in which to convert timestamp. If 0, timestamp is interpreted as a UTC value and converted to local time. If 1, timestamp is interpreted as a local date/time value and is converted to UTC. The default is 0 | <Function>.$ZDATETIMEH
-| $ZU(194,1) | Returns 1 if emergency startup,otherwise 0.
-| $ZU(194,1,uname,pwd) | 1 if uname,pwd good,otherwise 0.
-| $ZU(194,2) | Returns comma-sep list uid,gid,ownerid.
+| $ZU(193,timestamp,direction) | Converts Coordinated Universal Time (UTC) to local date and time (and vice versa). direction (optional) -> a boolean values specifying the direction in which to convert timestamp. If 0, timestamp is interpreted as a UTC value and converted to local time. If 1, timestamp is interpreted as a local date/time value and is converted to UTC. The default is 0 | <Function>.$ZDATETIMEH
+| $ZU(194,1) | Returns 1 if emergency startup, otherwise 0.
+| $ZU(194,1,uname,pwd) | 1 if uname, pwd good, otherwise 0.
+| $ZU(194,2) | Returns comma-sep list uid, gid, ownerid.
 | $ZU(194,3,uname,pwd) | Sets username/pw into emergency space.
 | $ZU(194,4) | Resturns 1 if private routine on stack
 | $ZU(195) |
