@@ -43,9 +43,9 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(16) | Returns device names of specified type
 | $ZU(17) | Mounts database
 | $ZU(18,n) | Sets undefined variable handling for the current process. n is optional (0 by default), changes behavior of Caché when it encounters an undefined variable for local, process-private global, and global variables; it has no effect on special variables. | API: %SYSTEM.Process.Undefined()
-| $ZU(18,0) | Issues the <UNDEFINED> error for any undefined variable.
-| $ZU(18,1) | Returns a null string for a reference to an undefined variable with subscripts, and issues the<UNDEFINED> error for undefined variables without subscripts.
-| $ZU(18,2) | Returns a null string (instead of issuing an <UNDEFINED> error) for any undefined variable.
+| $ZU(18,0) | Issues the [UNDEFINED] error for any undefined variable.
+| $ZU(18,1) | Returns a null string for a reference to an undefined variable with subscripts, and issues the [UNDEFINED] error for undefined variables without subscripts.
+| $ZU(18,2) | Returns a null string (instead of issuing an [UNDEFINED] error) for any undefined variable.
 | $ZU(18,-1) | $ZU(18,2)
 | $ZU(19) | Duplicate of $ZU(18) | 
 | $ZU(20,new) | Specifies the namespace(s) that contains the routine dataset. | API: %SYSTEM.Process.UserRoutinePath() 
@@ -91,7 +91,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(46) | 
 | $ZU(47) | 
 | $ZU(48) | ForceX for VMS
-| $ZU(49) | Returns the header information for the manager’s directory. | API: SYS.Database.<various class properties> | 
+| $ZU(49) | Returns the header information for the manager’s directory. | API: SYS.Database.[various class properties] | 
 | $ZU(49,dir) | Returns information on the directory dir (if dir="",current directory). | 
 | $ZU(49,dir,0) | Returns the database header information as a comma-separated string. This is the default if no flag parameter is specified.
 | $ZU(49,dir,1) | Returns cluster lock information as a comma-separated string. Do not use this flag value when specifying a system file number for dir.
@@ -101,7 +101,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(51) | Returns value of WDSTOP (wait for quiescence) | 
 | $ZU(51,1) | Start the Write Daemon if necessary | 
 | $ZU(52) | database restore
-| $ZU(53) | TCP Device name assigned by parent process | API: %SYSTEM.INetInfo.<TCPName()/TPStats()>
+| $ZU(53) | TCP Device name assigned by parent process | API: %SYSTEM.INetInfo.[TCPName()/TPStats()]
 | $ZU(53,2) | Returns the number of bytes that have been read from the current TCP device.
 | $ZU(53,3) | Returns the number of bytes that have been read from the current TCP device and clears the counter.
 | $ZU(53,4) | Returns the number of bytes that have been written to the current TCP device.
@@ -137,7 +137,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(66) | Creates daemon jobs
 | $ZU(67,pid) | Returns the job number of process "pid" if it is alive, else 0
 | $ZU(67,0,pid) | Returns 2 if pid is active, 0 if not there, 1 if job is dead but pidtab is still in pidtab. | API: %SYS.ProcessQuery.IsGhost / %SYSTEM.Process.IsGhost()
-| $ZU(67,1,pid) | Same as $ZU(67,0,pid) except it will clean up the pidtab if job is dead. 
+| $ZU(67,1,pid) | Same as $ZU(67,0,pid) except it will clean up the pidtab if job is dead. | Deprecated 
 | $ZU(67,4) | Returns Process State of a Specified Process | API: %SYS.ProcessQuery.State / %SYSTEM.Process.State()
 | $ZU(67,5) | Returns Routine Name of a Specified Process | API: %SYS.ProcessQuery.Routine / %SYSTEM.Process.Routine()
 | $ZU(67,6) | Returns Namespace Name of a Specified Process | API: %SYS.ProcessQuery.NameSpace / %SYSTEM.Process.NameSpace()
@@ -151,6 +151,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(67,14) | Returns Operating System Running a Client Process | API: %SYS.ProcessQuery.CSPSessionID / %SYSTEM.Process.CSPSessionID()
 | $ZU(67,15) | Returns IP Address of a Client Process | API: %SYS.ProcessQuery.ClientIPAddress / %SYSTEM.Process.ClientIPAddress()
 | $ZU(67,32,pid) | Returns %SS name of pid | %SYS.ProcessQuery.Open() and .%OpenID() can also be used to check the state of a process. You can Open a %SYS.ProcessQuery object by job number or process ID, then look at the JobNumber or Pid property. Also, see the ClientIPAddress and StartupClientIPAddress properties of that class |  
+| $ZU(68) | **Per-process configuration operations**
 | $ZU(68,0,n) | Sets undefined variable handling for the current process. | API: %SYS.Process.Undefined()
 | $ZU(68,1,n) | Null Subscript Mode Process Switch. n=0, Disables setting/referencing null subscripted globals (the default). n=1, Enables setting/referencing null subscripted globals. | API: %SYSTEM.Process.OpenMode()
 | $ZU(68,2,n) | Default OPEN Mode for Sequential Files. n -> the boolean value that specifies the process-specific default mode for sequential files on OPEN.
@@ -182,7 +183,8 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(68,67,n) | Stack and Register Usage Message Box Display.  n -> the boolean value that specifies whether or not Caché should display or suppress the Windows stackand register usage box for a cache.exe process when it encounters an exception. 1 = enable display of the message box. 0 = suppress display of the message box. The default is 0. | API: %SYSTEM.Process.ExceptionLog()
 | $ZU(68,70,n) | $DOUBLE INF and NAN Behavior.  n -> a boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions. | API: %SYSTEM.Process.IEEEError()
 | $ZU(68,71,n) | Sets IP address format for the current process.  n -> a boolean value to set IP address format. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported). | API: %SYSTEM.Process.IPv6Format()
-| $ZU(68,72,n) | Sets MVBasic handling of undefined variables.  n -> the boolean value that specifies whether or not Caché should issue an error when the current MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0. | API: %SYSTEM.Process.MVUndefined()
+| $ZU(68,72,n) | Sets MVBasic handling of undefined variables.  n -> the boolean value that specifies whether or not Caché should issue an error when the current MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an [UNDEFINED] error for an undefined variable. The default is 0. | API: %SYSTEM.Process.MVUndefined()
+| $ZU(69) | **System-wide configuration operations**
 | $ZU(69,0,n) | Default $ZU(18) Values. n -> a numeric code specifying how to handle undefined variables system-wide. Permitted values are 0, 1, and 2. | API: Config.Miscellaneous.Undefined
 | $ZU(69,1,n) | Null Subscript Mode System Default.  n -> the boolean value that specifies whether or not to enable the setting and referencing of null subscripted globals. | API: Config.Miscellaneous.NullSubscripts
 | $ZU(69,2,n) | Default Mode for Sequential Files.  n -> the boolean value that specifies the system-wide default mode for sequential files on OPEN. The options are: 0=Read-only, 1=Read/Write | API: Config.Miscellaneous.OpenMode
@@ -227,7 +229,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(69,69,n) | Long String Support.  n -> the boolean value that specifies whether or not Caché should allocate stack space to support strings over 32K characters in length. 1 = allocate long string stack space. 0 = do not allocate long string stack space. The default is 0. | API: Config.Miscellaneous.EnableLongStrings
 | $ZU(69,70,n) | $DOUBLE INF and NAN Behavior.  n -> a boolean that specifies whether to generate Caché error messages or return INF, –INF, and NAN values for unresolvable IEEE floating point conversions. | API: Config.Miscellaneous.IEEEError
 | $ZU(69,71) | Sets IP address format system-wide.  n -> a boolean value to set IP address format system-wide. 0=IPv6 format disabled (IPv4 only). 1=IPv6 format enabled (both IPv4 and IPv6 supported). | API: Config.Miscellaneous.IPv6
-| $ZU(69,72) | Sets MVBasic handling of undefined variables system-wide.  n -> the boolean value that specifies whether or not Caché should issue an error when an MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an <UNDEFINED> error for an undefined variable. The default is 0. | API: Config.Miscellaneous.MVDefined
+| $ZU(69,72) | Sets MVBasic handling of undefined variables system-wide.  n -> the boolean value that specifies whether or not Caché should issue an error when an MVBasic routine references an undefined variable. 1 = substitute the empty string for an undefined variable. 0 = issue an [UNDEFINED] error for an undefined variable. The default is 0. | API: Config.Miscellaneous.MVDefined
 | $ZU(70) | Subscript encoding
 | $ZU(71,date) | Sets date to a fixed value for the current process. $HOROLOG format. | API: %SYSTEM.Process.FixedDate()
 | $ZU(71,0) | Sets date to default.
@@ -263,7 +265,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(96) | Returns or sets Caché information
 | $ZU(96,3,n) | Return error number for user-defined command. n -> a user-defined error number to return, specified as an expression that resolves to a positive integer. | API: %SYSTEM.Process.ThrowError()
 | $ZU(96,4,n) | Sets $TEST to Reflect Redirection Operations.  n -> the boolean value used to set the $TEST special variable upon return from I/O redirection code. 0 = Clears $TEST (sets to 0) on return from the redirected READ. 1 = Sets $TEST (sets to 1) on return from the redirected READ. | API: %SYSTEM.Process.IODollarTest()
-| $ZU(96,5,string) | Sets $DEVICE | API: <special variable>.$DEVICE
+| $ZU(96,5,string) | Sets $DEVICE | API: [special variable].$DEVICE
 | $ZU(96,9) | Returns the Calling Routine Name | API: %SYSTEM.Process.CallingRoutine()
 | $ZU(96,10) | Returns the Calling Routine Namespace |  API: %SYSTEM.Process.CallingDatabase()
 | $ZU(96,14) | Returns the Current Device Type. | API: %Library.Device.GetType()
@@ -298,7 +300,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(112,19) | Returns 1 if clustered,0 otherwise.
 | $ZU(113) |  | Deprecated
 | $ZU(114,0) | Returns the address of the primary ethernet device. This primary ethernet device is the first ethernet device found on the device names list with a valid ethernet address. Any ethernet device can be designated the primary ethernet device. | API: %SYSTEM.INetIngo.EthernetAddress()
-| $ZU(114,0,name) | Returns the address of any attached ethernet device specified by name. On OpenVMS systems, this is the physical port address of the ethernet device, not the hardware address.The ethernet address is returned as a string of 12 characters that represent the 48-bit ethernet address. The name is not case sensitive. The maximum length of a device names list is platform-dependent, but the name of anindividual device cannot be more than 15 characters in length. An invalid name value results in a <FUNCTION> error.
+| $ZU(114,0,name) | Returns the address of any attached ethernet device specified by name. On OpenVMS systems, this is the physical port address of the ethernet device, not the hardware address.The ethernet address is returned as a string of 12 characters that represent the 48-bit ethernet address. The name is not case sensitive. The maximum length of a device names list is platform-dependent, but the name of anindividual device cannot be more than 15 characters in length. An invalid name value results in a [FUNCTION] error.
 | $ZU(114,0) | Returns a null string, rather than an ethernet address, if problems.
 | $ZU(114,1) | Returns the current list of attached ethernet device names, delimited by $CHAR(1). The first name in this list is the primary ethernet device.
 | $ZU(114,2) | Returns the current list of ethernet device names, delimited by commas.
@@ -332,7 +334,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(137) | 
 | $ZU(138) | 
 | $ZU(139) | Suspends transaction
-| $ZU(140) | VMS file/directory utilities | API: %Library.File.<various class methods> 
+| $ZU(140) | VMS file/directory utilities | API: %Library.File.[various class methods]
 | $ZU(140,1,name) | Returns file size in bytes.
 | $ZU(140,2,name,timeflag) | Returns modification date/time in $HOROLOG format. Returns -2 if the specified file or directory does not exist. On Windows systems, -2 is also returned if a trailing slash is specified. Using the optional timeflag, you can specify whether to return the modification time value in local timezonetime or Universal time (UTC). Universal time is (for most purposes) equivalent to Greenwich Mean Time (GMT).
 | $ZU(140,3,name,timeflag) | Returns creation date/time in $HOROLOG format. Returns -2 if the specified file or directory does not exist. On Windows systems, -2 is also returned if a trailing slash is specified. Using the optional timeflag, you can specify whether to return the creation time value in local timezone time or Universal time (UTC). Universal time is (for most purposes) equivalent to Greenwich Mean Time (GMT).
@@ -364,7 +366,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(156) | internal new lock support
 | $ZU(157) | comm. Ports
 | $ZU(158,0) | Returns the number of printers currently installed on your system, counting from 1. | %Library.Device.InstalledPrinters()
-| $ZU(158,1,n) | Returns the pathname of the printer currently installed on your system that corresponds to n. Caché counts printers from 1, and assigns a sequential integer to each. If n is a number that does not correspond to a printer, Caché issues a <FUNCTION> error. | %Library.Device.GetPrinters()
+| $ZU(158,1,n) | Returns the pathname of the printer currently installed on your system that corresponds to n. Caché counts printers from 1, and assigns a sequential integer to each. If n is a number that does not correspond to a printer, Caché issues a [FUNCTION] error. | %Library.Device.GetPrinters()
 | $ZU(159) | obsolete printer wizard login support
 | $ZU(160) | Saves/restores job state
 | $ZU(161) | fastcloseobj
@@ -398,8 +400,8 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(182,1) | Returns gbackupreq
 | $ZU(182,1,0) | Frees a suspended Write Daemon
 | $ZU(182,1,n) | Sets gbackupreq to n (n>0) or clear (n=0) and gwdmaxsusptime to 0 and gbackupmaxtime to 0 
-| $ZU(182,1,n,m) | set gbackupreq to n (n>0) or clear (n=0) and gwdmaxsusptime to <m> and gbackupmaxtime to 0 gwdmaxsusptime is only changed when n>0
-| $ZU(182,1,n,m,t) | Sets gbackupreq to n (n>0) or clear (n=0) and gwdmaxsusptime to <m> and gbackupmaxtime to <t> 
+| $ZU(182,1,n,m) | set gbackupreq to n (n>0) or clear (n=0) and gwdmaxsusptime to [m] and gbackupmaxtime to 0 gwdmaxsusptime is only changed when n>0
+| $ZU(182,1,n,m,t) | Sets gbackupreq to n (n>0) or clear (n=0) and gwdmaxsusptime to [m] and gbackupmaxtime to [t] 
 | $ZU(182,2,i) | Returns gbackupsfn[i] (i>=0)
 | $ZU(182,2,i,n) | Sets gbackupsfn[i] (i>=0) to sfn n
 | $ZU(182,3[,0/1]) | get[,clear/set] bckjob to pjobnum.clear/set: return 1 on success or <=0
@@ -416,12 +418,12 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(186,5) | Username. For example, fred>. This is the same for all of your terminal processes.
 | $ZU(186,6) | Elapse time executing the last command, in seconds.milliseconds. For example, .000495>. Leadingand trailing zeros are suppressed.This changes for each prompt.
 | $ZU(187) | | Removed, never used
-| $ZU(188) | Returns local date and time with fractional seconds system-wide. | <Function>.$NOW
+| $ZU(188) | Returns local date and time with fractional seconds system-wide. | [Function].$NOW
 | $ZU(189) | Checks if TCP device is disconnected. | API: %SYSTEM.INetInfo.Connected()
 | $ZU(190) | SNMP support
 | $ZU(191) | 
 | $ZU(192) | 
-| $ZU(193,timestamp,direction) | Converts Coordinated Universal Time (UTC) to local date and time (and vice versa). direction (optional) -> a boolean values specifying the direction in which to convert timestamp. If 0, timestamp is interpreted as a UTC value and converted to local time. If 1, timestamp is interpreted as a local date/time value and is converted to UTC. The default is 0 | <Function>.$ZDATETIMEH
+| $ZU(193,timestamp,direction) | Converts Coordinated Universal Time (UTC) to local date and time (and vice versa). direction (optional) -> a boolean values specifying the direction in which to convert timestamp. If 0, timestamp is interpreted as a UTC value and converted to local time. If 1, timestamp is interpreted as a local date/time value and is converted to UTC. The default is 0 | [Function].$ZDATETIMEH
 | $ZU(194,1) | Returns 1 if emergency startup, otherwise 0.
 | $ZU(194,1,uname,pwd) | 1 if uname, pwd good, otherwise 0.
 | $ZU(194,2) | Returns comma-sep list uid, gid, ownerid.
