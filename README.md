@@ -101,13 +101,13 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(51) | Returns value of WDSTOP (wait for quiescence) | 
 | $ZU(51,1) | Start the Write Daemon if necessary | 
 | $ZU(52) | database restore
-| $ZU(53) | TCP Device name assigned by parent process | API: %SYSTEM.INetInfo.[TCPName()/TPStats()]
+| $ZU(53) | TCP Device name assigned by parent process | API: %SYSTEM.INetInfo.[TCPName() / TPStats()]
 | $ZU(53,2) | Returns the number of bytes that have been read from the current TCP device.
 | $ZU(53,3) | Returns the number of bytes that have been read from the current TCP device and clears the counter.
 | $ZU(53,4) | Returns the number of bytes that have been written to the current TCP device.
 | $ZU(53,5) | Returns the number of bytes that have been written to the current TCP device and clears the counter.
 | $ZU(54,0) | Network db lookups (See $ZU(110)). | 
-| $ZU(55,n) | Returns or changes the current language mode | %SYSTEM.Process.LanguageMode()
+| $ZU(55,n) | Returns or changes the current language mode | API: %SYSTEM.Process.LanguageMode()
 | $ZU(55,0) | Sets language mode to Caché and return the value for the previous state of the switch. Caché is the default mode for the switch.
 | $ZU(55,1) | Sets language mode to DSM-11 and return the value for the previous state of the switch.
 | $ZU(55,2) | Sets language mode to Open M [DTM] and return the previous state of the switch.
@@ -122,7 +122,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(56,3) | Returns the error that caused the last job not to start.
 | $ZU(56,4) | Returns offset into routine buffer of current object code pointer.
 | $ZU(56,5) | Extended error information associated with the most recent error for which such information is maintained in perritem.
-| $ZU(56,6) | Returns any OS error message associated with the COS error code, in the format "code text" | %SYSTEM.Process.OSError()
+| $ZU(56,6) | Returns any OS error message associated with the COS error code, in the format "code text" | API: %SYSTEM.Process.OSError()
 | $ZU(57) | devigclr (Management function for routine interlock devices).
 | $ZU(58) | 
 | $ZU(59) | Clusters Support
@@ -152,19 +152,19 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(67,15) | Returns IP Address of a Client Process | API: %SYS.ProcessQuery.ClientIPAddress / %SYSTEM.Process.ClientIPAddress()
 | $ZU(67,32,pid) | Returns %SS name of pid | %SYS.ProcessQuery.Open() and .%OpenID() can also be used to check the state of a process. You can Open a %SYS.ProcessQuery object by job number or process ID, then look at the JobNumber or Pid property. Also, see the ClientIPAddress and StartupClientIPAddress properties of that class |  
 | $ZU(68) | **Per-process configuration operations**
-| $ZU(68,0,n) | Sets undefined variable handling for the current process. | API: %SYS.Process.Undefined()
-| $ZU(68,1,n) | Null Subscript Mode Process Switch. n=0, Disables setting/referencing null subscripted globals (the default). n=1, Enables setting/referencing null subscripted globals. | API: %SYSTEM.Process.OpenMode()
-| $ZU(68,2,n) | Default OPEN Mode for Sequential Files. n -> the boolean value that specifies the process-specific default mode for sequential files on OPEN.
+| $ZU(68,0,n) | Sets undefined variable handling for the current process. | API: %SYSTEM.Process.Undefined()
+| $ZU(68,1,n) | Null Subscript Mode Process Switch. n=0, Disables setting/referencing null subscripted globals (the default). n=1, Enables setting/referencing null subscripted globals. | API: %SYSTEM.Process.NullSubscripts()
+| $ZU(68,2,n) | Default OPEN Mode for Sequential Files. n -> the boolean value that specifies the process-specific default mode for sequential files on OPEN. | API: %SYSTEM.Process.OpenMode()
 | $ZU(68,3,n) | Automatic Sequential File Creation Mode Process Default.  n -> the boolean value that specifies whether a sequential file is automatically created on OPEN. | API: %SYSTEM.Process.FileMode()
 | $ZU(68,5,n) | Argumentless BREAK Process Switch.  n -> the boolean value that specifies whether or not argumentless BREAK commands are enabled for the current process. | API: %SYSTEM.Process.BreakMode()
 | $ZU(68,6,n) | Reliable SET Networking Mode Process Switch.  n -> the boolean value that specifies whether or not Reliable SET Networking mode is enabled for the current process. | Deprecated
-| $ZU(68,7,n) | External Reference Mode Process Switch.  n -> the boolean value that specifies whether or not extended global references are retained for the current process. | API: %SYSTEM.Process.LineRecall()
-| $ZU(68,11,n) | Read Line Recall Mode Process Switch.  n -> the boolean value that specifies whether read line recall mode is enabled for the current process. 1=enabled. 0=disabled.
-| $ZU(68,15,n) | Modem Disconnect Detection.  n -> the boolean value that specifies whether Caché detects I/O disconnection. | API: %SYSTEM.Process.SynchCommit()
-| $ZU(68,21,n) | Synchronous Transaction Commit Mode.  n -> a boolean value that specifies whether or not synchronous transaction commit mode is enabled for the current process. | API: %SYSTEM.Process.DX()
-| $ZU(68,22,n) | $X Update Mode for Escape Sequences.  n -> the numeric code that specifies the $X update mode for the current process. This mode should correspond to your computer platform and Intersystems software.
+| $ZU(68,7,n) | External Reference Mode Process Switch.  n -> the boolean value that specifies whether or not extended global references are retained for the current process. | API: %SYSTEM.Process.RefInKind()
+| $ZU(68,11,n) | Read Line Recall Mode Process Switch.  n -> the boolean value that specifies whether read line recall mode is enabled for the current process. 1=enabled. 0=disabled. | API: %SYSTEM.Process.LineRecall()
+| $ZU(68,15,n) | Modem Disconnect Detection.  n -> the boolean value that specifies whether Caché detects I/O disconnection. | API: %SYSTEM.Process.DisconnectErr()
+| $ZU(68,21,n) | Synchronous Transaction Commit Mode.  n -> a boolean value that specifies whether or not synchronous transaction commit mode is enabled for the current process. | API: %SYSTEM.Process.SynchCommit()
+| $ZU(68,22,n) | $X Update Mode for Escape Sequences.  n -> the numeric code that specifies the $X update mode for the current process. This mode should correspond to your computer platform and Intersystems software. | API: %SYSTEM.Process.DX()
 | $ZU(68,25,n) | Dynamically Set or Remove Batch Status.  n -> the boolean value that specifies whether batch or interactive status is active for the current process.
-| $ZU(68,26,n) | Default Display of Current Namespace.  n -> the boolean value that specifies whether Caché includes the current namespace name in the terminal prompt for the current process. | API: %SYSTEM.Process.GlobalKillDisabled()
+| $ZU(68,26,n) | Default Display of Current Namespace.  n -> the boolean value that specifies whether Caché includes the current namespace name in the terminal prompt for the current process. | API: %SYSTEM.Process.TerminalPrompt()
 | $ZU(68,27,n) | Network Hardening for the Current Process.  n -> the boolean value that specifies whether Caché enables or disables network hardening for the current process. | Deprecated
 | $ZU(68,28,n) | Control Root (Unsubscripted) Node Kills. n -> an integer code value that specifies whether Caché allows the current process to kill root-level (unsubscripted) global nodes. Supported values are 0, 1, and 2. | API: %SYSTEM.Process.GlobalKillDisabled()
 | $ZU(68,30,n) | Error-Handling Behavior (to allow use of DSM language-mode error-handling).  n -> the boolean value that specifies whether or not a process uses Caché-style error handling. 0 specifies Caché-style behavior. 1 specifies DSM-style behavior. The system default setting is 0. | API: %SYSTEM.Process.PopError()
@@ -239,10 +239,10 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(78) | Journaling utilities
 | $ZU(78,3) | Returns current journal file
 | $ZU(78,21) | Searches journal file for open transactions | API: %SYS.Journal.System.GetImageJournalInfo()
-| $ZU(78,22,filename,key) | Returns journaling information. filename (optional) -> the full pathname of a journal file, specified as a quoted string. The default is the current active journal. key (optional) -> a numeric code for the type of journal information to return. | API: %SYS.Journal.System.GetCurrentFileName() / .IsDisabled()
-| $ZU(78,23,filename) | Deletes a journal file. | %SYS.Journal.PurgeOne()
+| $ZU(78,22,filename,key) | Returns journaling information. filename (optional) -> the full pathname of a journal file, specified as a quoted string. The default is the current active journal. key (optional) -> a numeric code for the type of journal information to return. | API: %SYS.Journal.System.[GetCurrentFileName() / .IsDisabled()]
+| $ZU(78,23,filename) | Deletes a journal file. | API: %SYS.Journal.File.PurgeOne()
 | $ZU(78,28) | Returns journal directory block information. | Deprecated
-| $ZU(78,28) | Flushes journal buffer. | API: %SYS.Journal.System.Sync() 
+| $ZU(78,29) | Flushes journal buffer. | API: %SYS.Journal.System.Sync() 
 | $ZU(79) | WIJ reconfiguration
 | $ZU(80) | 
 | $ZU(81) | 
@@ -299,14 +299,13 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(112,15,31) | Current Non-CSP session count.
 | $ZU(112,19) | Returns 1 if clustered,0 otherwise.
 | $ZU(113) |  | Deprecated
-| $ZU(114,0) | Returns the address of the primary ethernet device. This primary ethernet device is the first ethernet device found on the device names list with a valid ethernet address. Any ethernet device can be designated the primary ethernet device. | API: %SYSTEM.INetIngo.EthernetAddress()
+| $ZU(114,0) | Returns the address of the primary ethernet device. This primary ethernet device is the first ethernet device found on the device names list with a valid ethernet address. Any ethernet device can be designated the primary ethernet device. Returns a null string, rather than an ethernet address, if problems. | API: %SYSTEM.INetInfo.EthernetAddress()
 | $ZU(114,0,name) | Returns the address of any attached ethernet device specified by name. On OpenVMS systems, this is the physical port address of the ethernet device, not the hardware address.The ethernet address is returned as a string of 12 characters that represent the 48-bit ethernet address. The name is not case sensitive. The maximum length of a device names list is platform-dependent, but the name of anindividual device cannot be more than 15 characters in length. An invalid name value results in a [FUNCTION] error.
-| $ZU(114,0) | Returns a null string, rather than an ethernet address, if problems.
 | $ZU(114,1) | Returns the current list of attached ethernet device names, delimited by $CHAR(1). The first name in this list is the primary ethernet device.
 | $ZU(114,2) | Returns the current list of ethernet device names, delimited by commas.
 | $ZU(114,2,name) | Replaces the current ethernet device names list with the list specified in name; it then returns the ethernet device names list prior to the replacement.
 | $ZU(115) | pZUints
-| $ZU(115,11,flag) | Specifies whether a value can be inserted into an identity column. flag The switch that specifies whether a value may be inserted to an IDENTITY column. Valid values are 1 (can insert a value) and 0 (cannot insert a value). The default is 0. | API: %SYSTEM.SQL.GetIdentityInsert() / SetIdentityInsert()
+| $ZU(115,11,flag) | Specifies whether a value can be inserted into an identity column. flag The switch that specifies whether a value may be inserted to an IDENTITY column. Valid values are 1 (can insert a value) and 0 (cannot insert a value). The default is 0. | API: %SYSTEM.SQL.[GetIdentityInsert() / SetIdentityInsert()]
 | $ZU(116) | Revalidation
 | $ZU(117) | ZOMSPACK
 | $ZU(118) | Reverse ZOMSPACK
@@ -341,7 +340,7 @@ https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_re
 | $ZU(140,4,name) | Tests whether the named item exists. Returns 0 if the specified pathname exists, for either a fileor a directory. Returns -2 if the specified item does not exist. On Windows systems, a directory can be specified with or without a trailing slash. On Windows systems, returns -123 if a valid filename is followed by a trailing slash.
 | $ZU(140,5,name) | Deletes the named file. Can delete a read-only file if user has privileges to modify the directory in which the file resides. Returns 0 when successful. Returns -2 if name does not exist. Returns -5 if name is a directory.
 | $ZU(140,6,name,newname) | Renames the file specified in name with the name specified in newname. May move the file to a different location, if the host operating system supports it. Returns -2 if name does not exist. Returns -32 if name is a directory.
-| $ZU(140,7,name) | Returns file attributes as a bit map. Returns -2 if the specified file does not exist. On Windows systems, a directory can be specified with or without a trailing slash. On Windows systems, returns -123 if a valid filename is followed by a trailing slash. | | API: %Library.File.Attributes() 
+| $ZU(140,7,name) | Returns file attributes as a bit map. Returns -2 if the specified file does not exist. On Windows systems, a directory can be specified with or without a trailing slash. On Windows systems, returns -123 if a valid filename is followed by a trailing slash. | API: %Library.File.Attributes() 
 | $ZU(140,9,name) | Creates the directory specified in name. Returns 0 when successful, or a negative integer indicating an error. Error return values are supplied by the operating system, and are thus platform dependent. On Windows, returns -183 if the specified directory already exists or could not be created. On UNIX®, returns -17 if the specified directory already exists or could not be created. On OpenVMS, returns a negative integer error code if the specified directory could not be created; returns 0 if the specified directory already exists.
 | $ZU(140,10,name) | Deletes the directory specified in name. Returns 0 when successful; returns -2 if the specified directory does not exist.
 | $ZU(140,11,source,destination) | Copies a file or directory from source to destination. This operation overwrites any prior contents of destination.$ZUTIL(140,14) is similar, but it does not overwrite destination. The source must exist. If a destination file does not exist, it will be created. If source is a file, destination may be a file or an existing directory. If source is a directory, destination must be an existing directory. In this case, all files in the source directory are copied to the destination directory, but subdirectories in source are not copied. Returns 0 when successful; returns a negative integer upon failure.
